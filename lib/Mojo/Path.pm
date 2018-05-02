@@ -114,6 +114,7 @@ sub _parse {
     $path = decode($charset, $path) // $path if $charset;
     $self->{leading_slash}  = $path =~ s!^/!!;
     $self->{trailing_slash} = $path =~ s!/$!!;
+    $self->{has_backslash} = 1 if $path =~ /\\/;
     $self->{parts}          = [split '/', $path, -1];
   }
 
